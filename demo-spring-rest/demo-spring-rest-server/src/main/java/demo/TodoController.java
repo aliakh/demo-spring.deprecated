@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -51,16 +50,16 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public Todo update(@PathVariable Long id, @RequestBody Todo todo) {
+    public ResponseEntity<Todo>  update(@PathVariable Long id, @RequestBody Todo todo) {
         Optional<Todo> todoOptional = todos.values()
                 .stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst();
         if (todoOptional.isPresent()) {
             todos.put(id, todo);
-            return todo;
+            return ResponseEntity.ok().body(todo);
         } else {
-            throw new NoSuchElementException();
+            return ResponseEntity.notFound().build();
         }
     }
 
