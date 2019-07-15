@@ -1,6 +1,7 @@
 package demo;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/todo", produces = { MediaType.APPLICATION_JSON_VALUE })
-public class TodoController{
+@RequestMapping(value = "/todo", produces = {MediaType.APPLICATION_JSON_VALUE})
+public class TodoController {
 
     private final AtomicLong ids = new AtomicLong();
     private final Map<Long, Todo> todos = Collections.synchronizedMap(Collections.emptyMap());
@@ -35,21 +36,23 @@ public class TodoController{
     }
 
     @GetMapping("/{id}")
-    public Todo getById(@PathVariable Long id) {
+    public ResponseEntity<Todo> getById(@PathVariable Long id) {
         return todos.values()
                 .stream()
-                .filter(todo -> todo.getId().equals(id))
-                .findFirst().orElseThrow(() -> new NoSuchElementException());
+                .filter(t -> t.getId().equals(id))
+                .map(t -> ResponseEntity.ok().body(t))
+                .findFirst()
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/")
-    public  Todo create(@RequestBody Todo todo) {
+    public Todo create(@RequestBody Todo todo) {
         return todos.put(ids.getAndIncrement(), todo);
     }
 
     @PutMapping("/{id}")
-    public Todo updateEmployee(@RequestBody Todo todo, @PathVariable Long id) {
-        Optional<Todo> todoOptional=  todos.values()
+    public Todo update(@PathVariable Long id, @RequestBody Todo todo) {
+        Optional<Todo> todoOptional = todos.values()
                 .stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst();
@@ -62,7 +65,7 @@ public class TodoController{
     }
 
     @DeleteMapping("/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         todos.remove(id);
     }
 }
