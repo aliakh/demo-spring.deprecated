@@ -2,6 +2,5 @@ rootProject.name = 'demo-spring-rest'
 
 include 'demo-spring-rest-shared'
 include 'demo-spring-rest-server'
-include 'demo-spring-rest-server2'
 include 'demo-spring-rest-client'
 include 'demo-spring-rest-client2'
