@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
@@ -26,12 +28,18 @@ public class TodoController{
 
     @GetMapping(value = "/all")
     public List<Todo> getAll() {
-        return todos.values().stream().sorted(Comparator.comparing(Todo::getId)).collect(Collectors.toList());
+        return todos.values()
+                .stream()
+                .sorted(Comparator.comparing(Todo::getId))
+                .collect(Collectors.toList());
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/{id}")
     public Todo getById(@PathVariable Long id) {
-        return todos.values().stream().filter(todo -> todo.getId() == id).findFirst().orElseThrow(() -> new RuntimeException());
+        return todos.values()
+                .stream()
+                .filter(todo -> todo.getId().equals(id))
+                .findFirst().orElseThrow(() -> new NoSuchElementException());
     }
 
     @PostMapping("/")
@@ -41,16 +49,16 @@ public class TodoController{
 
     @PutMapping("/{id}")
     public Todo updateEmployee(@RequestBody Todo todo, @PathVariable Long id) {
-
-        return repository.findById(id).map(employee -> {
-            employee.setFirstName(todo.getFirstName());
-            employee.setLastName(todo.getLastName());
-            employee.setEmail(todo.getEmail());
-            return repository.save(employee);
-        }).orElseGet(() -> {
-            todo.setId(id);
-            return repository.save(todo);
-        });
+        Optional<Todo> todoOptional=  todos.values()
+                .stream()
+                .filter(t -> t.getId().equals(id))
+                .findFirst();
+        if (todoOptional.isPresent()) {
+            todos.put(id, todo);
+            return todo;
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @DeleteMapping("/{id}")
