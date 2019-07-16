@@ -1,4 +1,4 @@
-package demo;
+package demo.shared;
 
 public class Todo {
 
@@ -32,11 +32,11 @@ public class Todo {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Todo{");
-        sb.append("id=").append(id);
-        sb.append(", text='").append(text).append('\'');
-        sb.append(", done=").append(done);
-        sb.append('}');
-        return sb.toString();
+        return new StringBuilder("Todo{")
+                .append("id=").append(id)
+                .append(", text='").append(text).append('\'')
+                .append(", done=").append(done)
+                .append('}')
+                .toString();
     }
 }

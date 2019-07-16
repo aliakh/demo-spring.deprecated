@@ -1,6 +1,6 @@
 package demo.client;
 
-import demo.Todo;
+import demo.shared.Todo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class RestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Autowired
-    private TodoService todoService;
+    private TodoServerService todoService;
 
     public static void main(String[] args) {
         SpringApplication.run(RestClient.class);

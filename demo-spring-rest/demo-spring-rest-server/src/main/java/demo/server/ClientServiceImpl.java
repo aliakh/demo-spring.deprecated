@@ -1,18 +1,9 @@
 package demo.server;
 
 import demo.shared.Todo;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,14 +13,12 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-@RestController
-@RequestMapping(value = "/todo", produces = {MediaType.APPLICATION_JSON_VALUE})
-public class TodoRestController {
+public class ClientServiceImpl implements ClientService {
 
     private final AtomicLong ids = new AtomicLong();
     private final Map<Long, Todo> todos = Collections.synchronizedMap(new HashMap<>());
 
-    @GetMapping(value = "")
+    @Override
     public List<Todo> getAll() {
         return todos.values()
                 .stream()
@@ -37,7 +26,7 @@ public class TodoRestController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/{id}")
+    @Override
     public ResponseEntity<Todo> getById(@PathVariable Long id) {
         return todos.values()
                 .stream()
@@ -47,16 +36,14 @@ public class TodoRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
-    @ResponseStatus(HttpStatus.CREATED)
+    @Override
     public Todo create(@RequestBody Todo todo) {
         todo.setId(ids.getAndIncrement());
         todos.put(todo.getId(), todo);
         return todo;
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @Override
     public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo todo) {
         return todos.values()
                 .stream()
@@ -70,14 +57,12 @@ public class TodoRestController {
                 );
     }
 
-    @DeleteMapping("")
-    @ResponseStatus(HttpStatus.OK)
+    @Override
     public void deleteAll() {
         todos.clear();
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @Override
     public void delete(@PathVariable Long id) {
         todos.remove(id);
     }

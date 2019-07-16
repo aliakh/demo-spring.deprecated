@@ -1,10 +1,10 @@
 package demo.client;
 
-import demo.Todo;
+import demo.shared.Todo;
 
 import java.util.List;
 
-public interface TodoService {
+public interface TodoServerService {
 
     List<Todo> getAll();
 
@@ -13,6 +13,8 @@ public interface TodoService {
     Todo create(Todo task);
 
     void update(Todo task);
+
+    void deleteAll();
 
     void delete(Todo task);
 }
