@@ -1,5 +1,6 @@
-package demo;
+package demo.client;
 
+import demo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
