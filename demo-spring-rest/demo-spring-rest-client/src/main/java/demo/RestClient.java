@@ -11,15 +11,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class Application {
+public class RestClient {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Autowired
     private TaskService taskService;
 
     public static void main(String args[]) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(RestClient.class);
     }
 
     @Bean

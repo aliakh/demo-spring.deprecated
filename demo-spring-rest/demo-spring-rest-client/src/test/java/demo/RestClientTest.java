@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTest {
+public class RestClientTest {
 	
 	@Autowired
 	private RestTemplate restTemplate;
