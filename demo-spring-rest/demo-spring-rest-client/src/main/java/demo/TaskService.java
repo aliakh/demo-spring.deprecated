@@ -10,7 +10,7 @@ public interface TaskService {
 
     public Todo create(Todo task) ;
 
-    public Todo update(Todo task) ;
+    public void update(Todo task) ;
 
     public void delete(Todo task) ;
 }

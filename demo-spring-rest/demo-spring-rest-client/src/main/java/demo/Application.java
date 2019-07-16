@@ -13,26 +13,55 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class Application {
 
-	@Autowired
-	private TaskService taskService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
-	private static final Logger log = LoggerFactory.getLogger(Application.class);
+    @Autowired
+    private TaskService taskService;
 
-	public static void main(String args[]) {
-		SpringApplication.run(Application.class);
-	}
-	
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
+    public static void main(String args[]) {
+        SpringApplication.run(Application.class);
+    }
 
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-			log.info(quote.toString());
-		};
-	}
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+    @Bean
+    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        return args -> {
+            LOGGER.info("Start");
+
+            delay();
+            LOGGER.info("Tasks: " + taskService.getAll());
+
+            delay();
+            Todo todo1 = new Todo();
+            todo1.setText("create");
+            todo1.setDone(false);
+            Todo todo2 = taskService.create(todo1);
+            LOGGER.info("Task after creation: " + todo2);
+
+            delay();
+            LOGGER.info("Tasks after creation: " + taskService.getAll());
+
+            delay();
+            LOGGER.info("Find by id: " + taskService.getById(todo2.getId()));
+
+            delay();
+            todo1.setDone(true);
+            taskService.update(todo1);
+            LOGGER.info("Tasks after updating: " + taskService.getAll());
+
+            delay();
+            taskService.delete(todo1);
+            LOGGER.info("Tasks after deleting: " + taskService.getAll());
+
+            LOGGER.info("Finish");
+        };
+    }
+
+    private void delay() throws InterruptedException {
+        Thread.sleep(1000);
+    }
 }
