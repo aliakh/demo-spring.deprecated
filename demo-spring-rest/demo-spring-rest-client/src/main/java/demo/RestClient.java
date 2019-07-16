@@ -16,7 +16,7 @@ public class RestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Autowired
-    private TaskService taskService;
+    private TodoService todoService;
 
     public static void main(String args[]) {
         SpringApplication.run(RestClient.class);
@@ -33,29 +33,29 @@ public class RestClient {
             LOGGER.info("Start");
 
             delay();
-            LOGGER.info("Tasks: " + taskService.getAll());
+            LOGGER.info("Tasks: " + todoService.getAll());
 
             delay();
             Todo todo1 = new Todo();
             todo1.setText("create");
             todo1.setDone(false);
-            Todo todo2 = taskService.create(todo1);
+            Todo todo2 = todoService.create(todo1);
             LOGGER.info("Task after creation: " + todo2);
 
             delay();
-            LOGGER.info("Tasks after creation: " + taskService.getAll());
+            LOGGER.info("Tasks after creation: " + todoService.getAll());
 
             delay();
-            LOGGER.info("Find by id: " + taskService.getById(todo2.getId()));
+            LOGGER.info("Find by id: " + todoService.getById(todo2.getId()));
 
             delay();
             todo1.setDone(true);
-            taskService.update(todo1);
-            LOGGER.info("Tasks after updating: " + taskService.getAll());
+            todoService.update(todo1);
+            LOGGER.info("Tasks after updating: " + todoService.getAll());
 
             delay();
-            taskService.delete(todo1);
-            LOGGER.info("Tasks after deleting: " + taskService.getAll());
+            todoService.delete(todo1);
+            LOGGER.info("Tasks after deleting: " + todoService.getAll());
 
             LOGGER.info("Finish");
         };

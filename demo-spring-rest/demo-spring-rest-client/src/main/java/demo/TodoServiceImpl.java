@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class TaskServiceImpl implements TaskService {
+public class TodoServiceImpl implements TodoService {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -27,12 +27,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Todo getById(long id) {
-        return  restTemplate.getForObject("http://localhost:8080/todo"+id, Todo.class);
+        return  restTemplate.getForObject("http://localhost:8080/todo/"+id, Todo.class);
     }
 
     @Override
     public Todo create(Todo task) {
-        return restTemplate.postForObject("http://localhost:8080/todo", task, Todo.class);
+        return restTemplate.postForObject("http://localhost:8080/todo/", task, Todo.class);
     }
 
     @Override

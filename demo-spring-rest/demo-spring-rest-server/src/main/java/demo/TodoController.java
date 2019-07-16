@@ -1,5 +1,6 @@
 package demo;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -23,7 +26,7 @@ import java.util.stream.Collectors;
 public class TodoController {
 
     private final AtomicLong ids = new AtomicLong();
-    private final Map<Long, Todo> todos = Collections.synchronizedMap(Collections.emptyMap());
+    private final Map<Long, Todo> todos = Collections.synchronizedMap(new HashMap<>());
 
     @GetMapping(value = "/all")
     public List<Todo> getAll() {
@@ -44,11 +47,14 @@ public class TodoController {
     }
 
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public Todo create(@RequestBody Todo todo) {
-        return todos.put(ids.getAndIncrement(), todo);
+        todo.setId(ids.getAndIncrement());
+        return todos.put(todo.getId(), todo);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo todo) {
         return todos.values()
                 .stream()
@@ -61,6 +67,7 @@ public class TodoController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Long id) {
         todos.remove(id);
     }

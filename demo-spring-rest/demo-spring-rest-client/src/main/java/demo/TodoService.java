@@ -2,7 +2,7 @@ package demo;
 
 import java.util.List;
 
-public interface TaskService {
+public interface TodoService {
 
     public List<Todo> getAll() ;
 
