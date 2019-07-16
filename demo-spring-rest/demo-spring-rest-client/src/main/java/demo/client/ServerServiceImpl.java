@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class TodoServerServiceImpl implements TodoServerService {
+public class ServerServiceImpl implements ServerService {
 
     private static final String URL = "http://localhost:8080/todo";
 
@@ -21,7 +21,7 @@ public class TodoServerServiceImpl implements TodoServerService {
     @Override
     public List<Todo> getAll() {
         ResponseEntity<List<Todo>> response = restTemplate.exchange(
-                URL ,
+                URL,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Todo>>() {

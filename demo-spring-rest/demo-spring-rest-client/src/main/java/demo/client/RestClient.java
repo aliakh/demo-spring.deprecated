@@ -17,7 +17,7 @@ public class RestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Autowired
-    private TodoServerService todoService;
+    private ServerService todoService;
 
     public static void main(String[] args) {
         SpringApplication.run(RestClient.class);

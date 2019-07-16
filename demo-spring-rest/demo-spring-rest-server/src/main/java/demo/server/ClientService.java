@@ -4,16 +4,17 @@ import demo.shared.Todo;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
 
     List<Todo> getAll();
 
-    Todo getById(@PathVariable Long id);
+    Optional<Todo> getById(@PathVariable Long id);
 
     Todo create(Todo todo);
 
-    Todo update(Long id, Todo todo);
+    Optional<Todo> update(Long id, Todo todo);
 
     void deleteAll();
 
