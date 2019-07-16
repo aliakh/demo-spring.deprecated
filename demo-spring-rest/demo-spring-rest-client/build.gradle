@@ -13,7 +13,7 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'demo-spring-rest-client'
-    version =  '0.1.0'
+    version = '0.0.1'
 }
 
 repositories {
@@ -24,9 +24,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile project(':demo-spring-rest-shared')
+
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework:spring-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

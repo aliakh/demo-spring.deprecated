@@ -30,15 +30,13 @@ public class Todo {
         this.done = done;
     }
 
-    public Todo() {
-    }
-
     @Override
     public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", done=" + done +
-                '}';
+        final StringBuilder sb = new StringBuilder("Todo{");
+        sb.append("id=").append(id);
+        sb.append(", text='").append(text).append('\'');
+        sb.append(", done=").append(done);
+        sb.append('}');
+        return sb.toString();
     }
 }
