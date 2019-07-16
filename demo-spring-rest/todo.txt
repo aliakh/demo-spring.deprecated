@@ -1,3 +1,6 @@
 https://www.youtube.com/watch?v=SC0FPuDKei0
 https://www.youtube.com/watch?v=oG2rotiGr90
 https://www.youtube.com/watch?v=wylViAqNiRA
+
+https://spring.io/blog/2009/03/08/rest-in-spring-3-mvc
+https://spring.io/blog/2009/03/27/rest-in-spring-3-resttemplate
