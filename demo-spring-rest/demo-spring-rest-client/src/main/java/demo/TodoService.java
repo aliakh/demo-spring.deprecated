@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface TodoService {
 
-    public List<Todo> getAll() ;
+    List<Todo> getAll() ;
 
-    public Todo getById(long id) ;
+    Todo getById(long id) ;
 
-    public Todo create(Todo task) ;
+    Todo create(Todo task) ;
 
-    public void update(Todo task) ;
+    void update(Todo task) ;
 
-    public void delete(Todo task) ;
+    void delete(Todo task) ;
 }

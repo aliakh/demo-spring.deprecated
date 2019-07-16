@@ -18,7 +18,7 @@ public class RestClient {
     @Autowired
     private TodoService todoService;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         SpringApplication.run(RestClient.class);
     }
 
@@ -28,7 +28,7 @@ public class RestClient {
     }
 
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner run(RestTemplate restTemplate) {
         return args -> {
             LOGGER.info("Start");
 
