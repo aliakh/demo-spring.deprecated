@@ -35,7 +35,7 @@ public class Todo {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Todo{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
                 ", done=" + done +

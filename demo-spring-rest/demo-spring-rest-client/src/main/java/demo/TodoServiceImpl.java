@@ -37,11 +37,11 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public void update(Todo task) {
-         restTemplate.put("http://localhost:8080/todo"+task.getId(), task, Todo.class);
+         restTemplate.put("http://localhost:8080/todo/"+task.getId(), task, Todo.class);
     }
 
     @Override
     public void delete(Todo task) {
-        restTemplate.delete("http://localhost:8080/todo", Todo.class, task);
+        restTemplate.delete("http://localhost:8080/todo/"+task.getId());
     }
 }

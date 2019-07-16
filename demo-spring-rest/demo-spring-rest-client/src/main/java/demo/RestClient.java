@@ -49,12 +49,12 @@ public class RestClient {
             LOGGER.info("Find by id: " + todoService.getById(todo2.getId()));
 
             delay();
-            todo1.setDone(true);
-            todoService.update(todo1);
+            todo2.setDone(true);
+            todoService.update(todo2);
             LOGGER.info("Tasks after updating: " + todoService.getAll());
 
             delay();
-            todoService.delete(todo1);
+            todoService.delete(todo2);
             LOGGER.info("Tasks after deleting: " + todoService.getAll());
 
             LOGGER.info("Finish");

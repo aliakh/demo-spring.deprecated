@@ -50,7 +50,8 @@ public class TodoController {
     @ResponseStatus(HttpStatus.CREATED)
     public Todo create(@RequestBody Todo todo) {
         todo.setId(ids.getAndIncrement());
-        return todos.put(todo.getId(), todo);
+        todos.put(todo.getId(), todo);
+        return todo;
     }
 
     @PutMapping("/{id}")
@@ -63,7 +64,9 @@ public class TodoController {
                 .map(t -> {
                     todos.put(id, todo);
                     return ResponseEntity.ok().body(todo);
-                }).orElseGet(() -> ResponseEntity.notFound().build());
+                }).orElseGet(
+                        () -> ResponseEntity.notFound().build()
+                );
     }
 
     @DeleteMapping("/{id}")
