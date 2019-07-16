@@ -4,3 +4,10 @@ https://www.youtube.com/watch?v=wylViAqNiRA
 
 https://spring.io/blog/2009/03/08/rest-in-spring-3-mvc
 https://spring.io/blog/2009/03/27/rest-in-spring-3-resttemplate
+
+DELETE	delete(String, String...)
+GET	getForObject(String, Class, String...)
+HEAD	headForHeaders(String, String...)
+OPTIONS	optionsForAllow(String, String...)
+POST	postForLocation(String, Object, String...)
+PUT	put(String, Object, String...)
