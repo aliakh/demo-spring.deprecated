@@ -1,7 +1,6 @@
 package demo.server;
 
 import demo.shared.Todo;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +9,7 @@ public interface ClientService {
 
     List<Todo> getAll();
 
-    Optional<Todo> getById(@PathVariable Long id);
+    Optional<Todo> getById(Long id);
 
     Todo create(Todo todo);
 
