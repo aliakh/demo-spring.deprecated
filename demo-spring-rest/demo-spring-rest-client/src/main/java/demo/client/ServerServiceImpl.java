@@ -2,6 +2,7 @@ package demo.client;
 
 import demo.shared.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +14,16 @@ import java.util.List;
 @Service
 public class ServerServiceImpl implements ServerService {
 
-    private static final String URL = "http://localhost:8080/todo";
-
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${client.url}")
+    private String clientUrl;
 
     @Override
     public List<Todo> getAll() {
         ResponseEntity<List<Todo>> response = restTemplate.exchange(
-                URL,
+                clientUrl,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Todo>>() {
@@ -31,25 +33,25 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Todo getById(long id) {
-        return restTemplate.getForObject(URL + "/" + id, Todo.class);
+        return restTemplate.getForObject(clientUrl + "/" + id, Todo.class);
     }
 
     @Override
     public Todo create(Todo task) {
-        return restTemplate.postForObject(URL , task, Todo.class);
+        return restTemplate.postForObject(clientUrl , task, Todo.class);
     }
 
     @Override
     public void update(Todo task) {
-        restTemplate.put(URL + "/" + task.getId(), task, Todo.class);
+        restTemplate.put(clientUrl + "/" + task.getId(), task, Todo.class);
     }
 
     public void deleteAll() {
-        restTemplate.delete(URL);
+        restTemplate.delete(clientUrl);
     }
 
     @Override
     public void delete(Todo task) {
-        restTemplate.delete(URL + "/" + task.getId());
+        restTemplate.delete(clientUrl + "/" + task.getId());
     }
 }
