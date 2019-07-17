@@ -36,7 +36,7 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Todo create(Todo task) {
-        return restTemplate.postForObject(URL + "/", task, Todo.class);
+        return restTemplate.postForObject(URL , task, Todo.class);
     }
 
     @Override

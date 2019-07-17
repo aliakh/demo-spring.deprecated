@@ -14,7 +14,7 @@ public interface ClientService {
 
     Todo create(Todo todo);
 
-    Optional<Todo> update(Long id, Todo todo);
+    Optional<Todo> update(Todo todo);
 
     void deleteAll();
 

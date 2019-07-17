@@ -42,13 +42,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Optional<Todo> update(Long id, Todo todo) {
+    public Optional<Todo> update(Todo todo) {
         return idsToTodos.values()
                 .stream()
-                .filter(t -> t.getId().equals(id))
+                .filter(t -> t.getId().equals(todo.getId()))
                 .findFirst()
                 .map(t -> {
-                    idsToTodos.put(id, todo);
+                    idsToTodos.put(todo.getId(), todo);
                     return todo;
                 });
     }

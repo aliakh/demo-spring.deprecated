@@ -1,6 +1,7 @@
 package demo.server;
 
 import demo.shared.Todo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,71 +15,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 @RestController
 @RequestMapping(value = "/todo", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class TodoRestController {
 
-    private final AtomicLong ids = new AtomicLong();
-    private final Map<Long, Todo> todos = Collections.synchronizedMap(new HashMap<>());
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping(value = "")
     public List<Todo> getAll() {
-        return todos.values()
-                .stream()
-                .sorted(Comparator.comparing(Todo::getId))
-                .collect(Collectors.toList());
+        return clientService.getAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getById(@PathVariable Long id) {
-        return todos.values()
-                .stream()
-                .filter(t -> t.getId().equals(id))
+        return clientService.getById(id)
                 .map(t -> ResponseEntity.ok().body(t))
-                .findFirst()
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Todo create(@RequestBody Todo todo) {
-        todo.setId(ids.getAndIncrement());
-        todos.put(todo.getId(), todo);
-        return todo;
+        return clientService.create(todo);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo todo) {
-        return todos.values()
-                .stream()
-                .filter(t -> t.getId().equals(id))
-                .findFirst()
-                .map(t -> {
-                    todos.put(id, todo);
-                    return ResponseEntity.ok().body(todo);
-                }).orElseGet(
-                        () -> ResponseEntity.notFound().build()
-                );
+        return clientService.update(todo)
+                .map(t -> ResponseEntity.ok().body(t))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAll() {
-        todos.clear();
+        clientService.deleteAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Long id) {
-        todos.remove(id);
+        clientService.delete(id);
     }
 }

@@ -34,11 +34,12 @@ public class RestClient {
             LOGGER.info("Start");
 
             delay();
+            todoService.deleteAll();
             LOGGER.info("Tasks: " + todoService.getAll());
 
             delay();
             Todo todo1 = new Todo();
-            todo1.setText("create");
+            todo1.setText("do something");
             todo1.setDone(false);
             Todo todo2 = todoService.create(todo1);
             LOGGER.info("Task after creation: " + todo2);
