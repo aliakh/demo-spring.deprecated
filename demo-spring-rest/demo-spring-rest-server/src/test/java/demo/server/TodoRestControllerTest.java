@@ -1,5 +1,6 @@
-package demo;
+package demo.server;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,9 @@ public class TodoRestControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
-    }
-
-    @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+    @Ignore
+    public void getAll() throws Exception {
+        this.mockMvc.perform(get("/todo")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(""));
     }
 }
