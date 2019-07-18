@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class ServerServiceImpl implements ServerService {
+public class TodoServiceImpl implements TodoService {
 
     @Autowired
     private RestTemplate restTemplate;

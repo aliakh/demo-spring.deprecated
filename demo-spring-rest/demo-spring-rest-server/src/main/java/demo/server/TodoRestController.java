@@ -22,16 +22,16 @@ import java.util.List;
 public class TodoRestController {
 
     @Autowired
-    private ClientService clientService;
+    private TodoService todoService;
 
     @GetMapping(value = "")
     public List<Todo> getAll() {
-        return clientService.getAll();
+        return todoService.getAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getById(@PathVariable Long id) {
-        return clientService.getById(id)
+        return todoService.getById(id)
                 .map(t -> ResponseEntity.ok().body(t))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -39,13 +39,13 @@ public class TodoRestController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Todo create(@RequestBody Todo todo) {
-        return clientService.create(todo);
+        return todoService.create(todo);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo todo) {
-        return clientService.update(todo)
+        return todoService.update(todo)
                 .map(t -> ResponseEntity.ok().body(t))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -53,12 +53,12 @@ public class TodoRestController {
     @DeleteMapping("")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAll() {
-        clientService.deleteAll();
+        todoService.deleteAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Long id) {
-        clientService.delete(id);
+        todoService.delete(id);
     }
 }

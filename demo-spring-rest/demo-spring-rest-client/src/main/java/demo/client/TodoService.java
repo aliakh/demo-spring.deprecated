@@ -4,7 +4,7 @@ import demo.shared.Todo;
 
 import java.util.List;
 
-public interface ServerService {
+public interface TodoService {
 
     List<Todo> getAll();
 
