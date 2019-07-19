@@ -25,6 +25,7 @@ public class TodoRestController {
     private TodoService todoService;
 
     @GetMapping(value = "")
+    @ResponseStatus(HttpStatus.OK)
     public List<Todo> getAll() {
         return todoService.getAll();
     }
@@ -57,7 +58,7 @@ public class TodoRestController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         todoService.delete(id);
     }
