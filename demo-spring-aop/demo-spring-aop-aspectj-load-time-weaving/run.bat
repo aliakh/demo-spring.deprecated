@@ -1,1 +1,1 @@
-mvnw clean build spring-boot:run
+gradle clean bootRun
