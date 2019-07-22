@@ -1,4 +1,4 @@
-package demo;
+package demo.service;
 
 import org.springframework.stereotype.Service;
 

@@ -15,7 +15,7 @@ public class LoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("@target(org.springframework.stereotype.Service)")
+    @Around("execution(public * demo.service..*(..))")
     public Object log(ProceedingJoinPoint jp) throws Throwable {
         LOGGER.info("Method: " + jp.getSignature().getName());
         LOGGER.info("Arguments: " + Arrays.toString(jp.getArgs()));
