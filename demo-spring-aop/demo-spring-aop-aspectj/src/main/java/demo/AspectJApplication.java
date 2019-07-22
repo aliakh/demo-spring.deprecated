@@ -41,3 +41,4 @@ public class AspectJApplication {
 }
 
 //https://github.com/jwilsoncredera/spring-aop-blog
+//http://foat.me/articles/java-aspects-using-spring-aop-and-aspectj/
