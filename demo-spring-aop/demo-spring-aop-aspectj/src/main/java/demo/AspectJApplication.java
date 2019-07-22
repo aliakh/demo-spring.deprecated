@@ -14,6 +14,8 @@ import org.springframework.util.ClassUtils;
 import java.util.Arrays;
 
 @SpringBootApplication
+//http://blog.kezhuw.name/2017/08/31/spring-aspectj-load-time-weaving/
+//https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-3-setting-up-aspectj-load-time-weaving/
 @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
 public class AspectJApplication {
 

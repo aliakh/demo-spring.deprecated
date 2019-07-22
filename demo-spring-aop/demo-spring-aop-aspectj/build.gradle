@@ -12,6 +12,13 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+build.doFirst {
+    jvmArgs = [
+            '-javaagent:' + projectDir + '/aspectjweaver-1.8.9.jar',
+            '-javaagent:' + projectDir + '/spring-instrument-5.1.8.RELEASE.jar'
+    ]
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-aop")
