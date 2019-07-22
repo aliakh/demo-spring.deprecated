@@ -17,15 +17,15 @@ import java.util.Arrays;
 //http://blog.kezhuw.name/2017/08/31/spring-aspectj-load-time-weaving/
 //https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-3-setting-up-aspectj-load-time-weaving/
 @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
-public class AspectJApplication {
+public class AspectJLoadTimeWeavingApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AspectJApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AspectJLoadTimeWeavingApplication.class);
 
     @Autowired
     private DemoService demoService;
 
     public static void main(String[] args) {
-        SpringApplication.run(AspectJApplication.class);
+        SpringApplication.run(AspectJLoadTimeWeavingApplication.class);
     }
 
     @Bean
