@@ -1,1 +1,1 @@
-gradle bootRun
+gradle clean bootRun
