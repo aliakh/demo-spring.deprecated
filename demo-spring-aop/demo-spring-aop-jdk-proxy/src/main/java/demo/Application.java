@@ -8,10 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
@@ -27,6 +26,8 @@ public class Application {
     public CommandLineRunner run() {
         return args -> {
             LOGGER.info("Service: " + demoService);
+            LOGGER.info("Class: " + demoService.getClass());
+            LOGGER.info("Superclass: " + demoService.getClass().getSuperclass());
             LOGGER.info("Sum: " + demoService.add(2,3));
         };
     }
