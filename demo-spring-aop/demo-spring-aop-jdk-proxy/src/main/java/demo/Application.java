@@ -23,6 +23,7 @@ public class Application {
     @Bean
     public CommandLineRunner run() {
         return args -> {
+            LOGGER.info("Service: " + demoService);
             LOGGER.info("Sum: " + demoService.add(2,3));
         };
     }
