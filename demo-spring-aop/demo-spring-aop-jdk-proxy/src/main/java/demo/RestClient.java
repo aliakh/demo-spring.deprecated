@@ -1,4 +1,4 @@
-package demo.client;
+package demo;
 
 import demo.shared.Todo;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class RestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Autowired
-    private TodoService todoService;
+    private DemoService demoService;
 
     public static void main(String[] args) {
         SpringApplication.run(RestClient.class);
@@ -34,30 +34,30 @@ public class RestClient {
             LOGGER.info("Start");
 
             delay();
-            todoService.deleteAll();
-            LOGGER.info("Tasks: " + todoService.getAll());
+            demoService.deleteAll();
+            LOGGER.info("Tasks: " + demoService.getAll());
 
             delay();
             Todo todo1 = new Todo();
             todo1.setText("do something");
             todo1.setDone(false);
-            Todo todo2 = todoService.create(todo1);
+            Todo todo2 = demoService.create(todo1);
             LOGGER.info("Task after creation: " + todo2);
 
             delay();
-            LOGGER.info("Tasks after creation: " + todoService.getAll());
+            LOGGER.info("Tasks after creation: " + demoService.getAll());
 
             delay();
-            LOGGER.info("Find by id: " + todoService.getById(todo2.getId()));
+            LOGGER.info("Find by id: " + demoService.getById(todo2.getId()));
 
             delay();
             todo2.setDone(true);
-            todoService.update(todo2);
-            LOGGER.info("Tasks after updating: " + todoService.getAll());
+            demoService.update(todo2);
+            LOGGER.info("Tasks after updating: " + demoService.getAll());
 
             delay();
-            todoService.delete(todo2);
-            LOGGER.info("Tasks after deleting: " + todoService.getAll());
+            demoService.delete(todo2);
+            LOGGER.info("Tasks after deleting: " + demoService.getAll());
 
             LOGGER.info("Finish");
         };
