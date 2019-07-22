@@ -29,7 +29,7 @@ public class JdkProxyApplication {
         return args -> {
             LOGGER.info("Service: " + demoService);
             LOGGER.info("Class: " + demoService.getClass());
-            LOGGER.info("getAllInterfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
+            LOGGER.info("Implemented interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
             LOGGER.info("Superclass: " + demoService.getClass().getSuperclass());
             LOGGER.info("Sum: " + demoService.add(2,3));
         };

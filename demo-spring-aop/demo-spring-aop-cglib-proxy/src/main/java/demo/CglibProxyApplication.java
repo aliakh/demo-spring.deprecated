@@ -1,6 +1,6 @@
 package demo;
 
-import demo.service.DemoService;
+import demo.service.DemoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class CglibProxyApplication {
     private static final Logger LOGGER = LoggerFactory.getLogger(CglibProxyApplication.class);
 
     @Autowired
-    private DemoService demoService;
+    private DemoServiceImpl demoService;
 
     public static void main(String[] args) {
         SpringApplication.run(CglibProxyApplication.class);
@@ -29,7 +29,7 @@ public class CglibProxyApplication {
         return args -> {
             LOGGER.info("Service: " + demoService);
             LOGGER.info("Class: " + demoService.getClass());
-            LOGGER.info("getAllInterfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
+            LOGGER.info("Implemented interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
             LOGGER.info("Superclass: " + demoService.getClass().getSuperclass());
             LOGGER.info("Sum: " + demoService.add(2,3));
         };
