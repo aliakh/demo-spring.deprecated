@@ -3,33 +3,24 @@ package demo;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Aspect
 @Component
 public class LoggingAspect {
 
-    @Around("@annotation(org.springframework.web.bind.annotation.RequestMapping) && execution(public * *(..))")
-    public Object log(final ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-                .currentRequestAttributes())
-                .getRequest();
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-        Object value;
-
-        try {
-            value = proceedingJoinPoint.proceed();
-        } catch (Throwable throwable) {
-            throw throwable;
-        } finally {
-            log.info(
-                    "{} {} from {}",
-                    request.getMethod(),
-                    request.getRequestURI(),
-                    request.getRemoteAddr(),
-                    request.getHeader("user-id"));
-        }
-
+    @Around("@target(org.springframework.stereotype.Service)")
+    public Object log(ProceedingJoinPoint jp) throws Throwable {
+        LOGGER.info("Method: " + jp.getSignature().getName());
+        LOGGER.info("Arguments: " + Arrays.toString(jp.getArgs()));
+        Object value = jp.proceed();
+        LOGGER.info("Result: " + value);
         return value;
     }
 }
