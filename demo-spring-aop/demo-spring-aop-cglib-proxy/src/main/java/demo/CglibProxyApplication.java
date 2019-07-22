@@ -13,16 +13,15 @@ import org.springframework.util.ClassUtils;
 import java.util.Arrays;
 
 @SpringBootApplication
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
-public class Application {
+public class CglibProxyApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CglibProxyApplication.class);
 
     @Autowired
     private DemoService demoService;
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(CglibProxyApplication.class);
     }
 
     @Bean
