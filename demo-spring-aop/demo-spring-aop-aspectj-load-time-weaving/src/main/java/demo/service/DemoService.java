@@ -1,6 +1,12 @@
 package demo.service;
 
-public interface DemoService {
+import org.springframework.stereotype.Service;
 
-    int add(int a, int b);
+@Service
+public class DemoService implements IDemoService {
+
+    @Override
+    public int add(int a, int b) {
+        return a + b;
+    }
 }
