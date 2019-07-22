@@ -1,3 +1,4 @@
 rootProject.name = 'demo-spring-aop'
 
+include 'demo-spring-aop-cglib-proxy'
 include 'demo-spring-aop-jdk-proxy'
