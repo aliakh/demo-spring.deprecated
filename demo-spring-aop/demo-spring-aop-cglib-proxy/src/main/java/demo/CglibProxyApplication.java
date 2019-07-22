@@ -12,6 +12,9 @@ import org.springframework.util.ClassUtils;
 
 import java.util.Arrays;
 
+// Can use this instead of spring.aop.proxy-target-class=true
+// to force CGLIB proxies for all Spring bean proxies.
+// @EnableAspectJAutoProxy(proxyTargetClass = true)
 @SpringBootApplication
 public class CglibProxyApplication {
 

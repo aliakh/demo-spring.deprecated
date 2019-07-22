@@ -39,3 +39,5 @@ public class AspectJApplication {
         };
     }
 }
+
+//https://github.com/jwilsoncredera/spring-aop-blog
