@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 public class DemoService implements IDemoService {
 
     @Override
-    public int add(int a, int b) {
-        return a + b;
+    public int incAndAdd(int a, int b) {
+        return inc(a) + inc(b);
+    }
+
+    int inc(int i) {
+        return i +1;
     }
 }

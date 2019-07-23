@@ -15,7 +15,7 @@ public class LoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(public * demo.service..*(..))")
+    @Around("execution(* demo.service.*.*(..))")
     public Object log(ProceedingJoinPoint jp) throws Throwable {
         LOGGER.info("Method: " + jp.getSignature().getName());
         LOGGER.info("Arguments: " + Arrays.toString(jp.getArgs()));
