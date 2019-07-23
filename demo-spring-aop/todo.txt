@@ -1,4 +1,3 @@
-http://blog.kezhuw.name/2017/08/31/spring-aspectj-load-time-weaving/
+https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-1-making-your-own-hystrix-aspect/
+https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-2-spring-jdk-proxies-vs-cglib-vs-aspectj/
 https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-3-setting-up-aspectj-load-time-weaving/
-https://github.com/jwilsoncredera/spring-aop-blog
-http://foat.me/articles/java-aspects-using-spring-aop-and-aspectj/

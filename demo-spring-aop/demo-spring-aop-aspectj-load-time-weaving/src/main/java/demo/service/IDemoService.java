@@ -2,5 +2,5 @@ package demo.service;
 
 public interface IDemoService {
 
-    int incAndAdd(int a, int b);
+    int add(int a, int b);
 }

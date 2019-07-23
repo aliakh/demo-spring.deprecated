@@ -6,11 +6,19 @@ import org.springframework.stereotype.Service;
 public class DemoService implements IDemoService {
 
     @Override
-    public int incAndAdd(int a, int b) {
-        return inc(a) + inc(b);
+    public int add(int a, int b) {
+        return dec(inc(identity(a))) + dec(inc(identity(b)));
+    }
+
+    protected int dec(int i) {
+        return i - 1;
     }
 
     int inc(int i) {
-        return i +1;
+        return i + 1;
+    }
+
+    private int identity(int i) {
+        return i;
     }
 }
