@@ -9,6 +9,3 @@ http://kamalmeet.com/aop/aop-spring-aop-vs-aspectj/
 http://kospiotr.github.io/wiki/spring-aop-presentation/
 http://k2java.blogspot.com/2011/04/spring-aop-vs-aspectj.html
 http://r4r.in/spring/interview-question-answers/?request_id=9-23&question_id=502
-http://java2novice.com/spring/aop-and-aspectj-introduction/
-https://howtodoinjava.com/spring-aop/spring-aop-aspectj-example-tutorial-using-annotation-config/
-https://www.tutorialspoint.com/spring/aop_with_spring
