@@ -14,8 +14,6 @@ import org.springframework.util.ClassUtils;
 import java.util.Arrays;
 
 @SpringBootApplication
-//http://blog.kezhuw.name/2017/08/31/spring-aspectj-load-time-weaving/
-//https://www.credera.com/blog/technology-insights/open-source-technology-insights/aspect-oriented-programming-in-spring-boot-part-3-setting-up-aspectj-load-time-weaving/
 @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
 public class AspectJLoadTimeWeavingApplication {
 
@@ -35,10 +33,7 @@ public class AspectJLoadTimeWeavingApplication {
             LOGGER.info("Class: " + demoService.getClass());
             LOGGER.info("Implemented interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
             LOGGER.info("Superclass: " + demoService.getClass().getSuperclass());
-            LOGGER.info("Sum: " + demoService.add(2,3));
+            LOGGER.info("Sum: " + demoService.add(2, 3));
         };
     }
 }
-
-//https://github.com/jwilsoncredera/spring-aop-blog
-//http://foat.me/articles/java-aspects-using-spring-aop-and-aspectj/
