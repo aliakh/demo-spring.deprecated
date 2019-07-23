@@ -21,6 +21,7 @@ public class LoggingAspect {
         LOGGER.info("Target: " + jp.getTarget());
         LOGGER.info("Signature: " + jp.getSignature());
         LOGGER.info("Arguments: " + Arrays.toString(jp.getArgs()));
+
         Object value = jp.proceed();
         LOGGER.info("Result: " + value);
         return value;

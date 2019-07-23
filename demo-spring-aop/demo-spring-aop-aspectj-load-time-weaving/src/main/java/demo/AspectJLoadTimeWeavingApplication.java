@@ -33,6 +33,7 @@ public class AspectJLoadTimeWeavingApplication {
             LOGGER.info("Service class: " + demoService.getClass());
             LOGGER.info("Service interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
             LOGGER.info("Service superclass: " + demoService.getClass().getSuperclass());
+
             LOGGER.info("Result: " + demoService.add(2, 3));
         };
     }
