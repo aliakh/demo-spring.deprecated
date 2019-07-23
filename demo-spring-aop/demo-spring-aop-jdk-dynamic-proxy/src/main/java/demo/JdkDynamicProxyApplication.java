@@ -13,15 +13,15 @@ import org.springframework.util.ClassUtils;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class JdkProxyApplication {
+public class JdkDynamicProxyApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JdkProxyApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JdkDynamicProxyApplication.class);
 
     @Autowired
     private IDemoService demoService;
 
     public static void main(String[] args) {
-        SpringApplication.run(JdkProxyApplication.class);
+        SpringApplication.run(JdkDynamicProxyApplication.class);
     }
 
     @Bean
