@@ -6,6 +6,14 @@ public class Todo {
     private String text;
     private boolean done;
 
+    public Todo() {
+    }
+
+    public Todo(String text, boolean done) {
+        this.text = text;
+        this.done = done;
+    }
+
     public Long getId() {
         return id;
     }

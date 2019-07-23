@@ -8,13 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.util.ClassUtils;
 
 import java.util.Arrays;
 
 @SpringBootApplication
-@EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
 public class AspectJLoadTimeWeavingApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AspectJLoadTimeWeavingApplication.class);

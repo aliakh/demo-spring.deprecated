@@ -1,0 +1,16 @@
+// roo> script --file demo-spring-roo.roo
+
+project setup --topLevelPackage demo
+jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+entity jpa --class ~.domain.Timer
+field string --fieldName message --notNull
+repository jpa --all
+service --all
+web mvc setup
+web mvc view setup --type THYMELEAF
+web mvc controller --all --responseType THYMELEAF
+web mvc controller --all --pathPrefix /api
+
+quit
+
+// mvn spring-boot:run

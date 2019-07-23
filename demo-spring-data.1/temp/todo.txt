@@ -1,0 +1,9 @@
+https://spring.io/projects/spring-data
+
+https://spring.io/guides/gs/accessing-data-jpa/
+https://spring.io/guides/gs/accessing-data-mongodb/
+https://spring.io/guides/gs/accessing-data-neo4j/
+https://spring.io/guides/gs/accessing-data-rest/
+
+Webinar: Spring Data Repositories - Best Practices
+https://www.youtube.com/watch?v=hwNyzkWENE0

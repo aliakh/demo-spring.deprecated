@@ -1,0 +1,23 @@
+https://spring.io/projects/spring-data-jpa
+
+https://spring.io/guides/gs/accessing-data-jpa/
+https://spring.io/guides/gs/accessing-data-mongodb/
+https://spring.io/guides/gs/accessing-data-neo4j/
+https://spring.io/guides/gs/accessing-data-rest/
+
+https://www.baeldung.com/spring-data
+https://www.baeldung.com/category/spring-data/tag/jpa/
+https://www.baeldung.com/category/spring-data/tag/mongodb/
+
+Webinar: Spring Data Repositories - Best Practices
+https://www.youtube.com/watch?v=hwNyzkWENE0
+Introduction to Spring Data
+https://www.youtube.com/watch?v=wn1KYxxm0wo
+Introduction to Spring Data JPA and Spring Data MongoDB
+https://www.youtube.com/watch?v=P05GlyrIz0o
+An Introduction to Spring Data JPA
+https://www.youtube.com/watch?v=Yg2gCpBCkZw
+The Spring Data MongoDB Project
+https://www.youtube.com/watch?v=YUdxKYHmaCM
+State of the art data access with Spring Data
+https://www.youtube.com/watch?v=Q6esdIY66rw&t=1494s

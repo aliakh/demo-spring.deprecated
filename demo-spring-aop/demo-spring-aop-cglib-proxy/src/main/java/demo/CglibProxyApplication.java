@@ -29,10 +29,11 @@ public class CglibProxyApplication {
     public CommandLineRunner run() {
         return args -> {
             LOGGER.info("Service: " + demoService);
-            LOGGER.info("Class: " + demoService.getClass());
-            LOGGER.info("Implemented interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
-            LOGGER.info("Superclass: " + demoService.getClass().getSuperclass());
-            LOGGER.info("Sum: " + demoService.add(2,3));
+            LOGGER.info("Service class: " + demoService.getClass());
+            LOGGER.info("Service interfaces: " + Arrays.toString(ClassUtils.getAllInterfaces(demoService)));
+            LOGGER.info("Service superclass: " + demoService.getClass().getSuperclass());
+
+            LOGGER.info("Result: " + demoService.add(2, 3));
         };
     }
 }

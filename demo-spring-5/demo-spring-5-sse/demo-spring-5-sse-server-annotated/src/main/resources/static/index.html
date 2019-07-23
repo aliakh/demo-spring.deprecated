@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo-spring-5-sse-client</title>
+</head>
+<body>
+<div class="events"></div>
+<script>
+    if (!!window.EventSource) {
+        var eventSource = new EventSource('/events');
+
+        function handle(message) {
+            document.querySelector('.events').innerHTML += message + '<br>';
+        }
+
+        eventSource.onopen = function (e) {
+            handle('opened');
+        };
+
+        eventSource.onmessage = function (e) {
+            handle('message: ' + e.data);
+        };
+
+        eventSource.onerror = function (e) {
+            if (e.readyState === EventSource.CONNECTING) {
+                handle('event: CONNECTING');
+            } else if (e.readyState === EventSource.OPEN) {
+                handle('event: OPEN');
+            } else if (e.readyState === EventSource.CLOSING) {
+                handle('event: CLOSING');
+            } else if (e.readyState === EventSource.CLOSED) {
+                handle('event: CLOSED');
+            } else {
+                handle('event: ' + e);
+            }
+        };
+    } else {
+        alert('The browser does not support Server-Sent Events');
+    }
+</script>
+</body>
+</html>

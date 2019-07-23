@@ -1,0 +1,6 @@
+rootProject.name = 'demo-spring-data'
+
+include 'demo-spring-data-jpa'
+include 'demo-spring-data-mongodb'
+include 'demo-spring-data-neo4j'
+include 'demo-spring-data-rest'

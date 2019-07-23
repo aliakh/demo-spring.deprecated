@@ -15,10 +15,13 @@ public class LoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(public * demo.service..*(..))")
+    @Around("execution(* demo.service.*.*(..))")
     public Object log(ProceedingJoinPoint jp) throws Throwable {
-        LOGGER.info("Method: " + jp.getSignature().getName());
+        LOGGER.info("This: " + jp.getThis());
+        LOGGER.info("Target: " + jp.getTarget());
+        LOGGER.info("Signature: " + jp.getSignature());
         LOGGER.info("Arguments: " + Arrays.toString(jp.getArgs()));
+
         Object value = jp.proceed();
         LOGGER.info("Result: " + value);
         return value;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo-spring-5-websocket-client</title>
+</head>
+<body>
+<div class="events"></div>
+<script>
+    var webSocket = new WebSocket("ws://localhost:8080/ws");
+
+    webSocket.onopen = function (event) {
+        handle('opened: ' + event);
+        webSocket.send("event from JavaScript client to server");
+    };
+    webSocket.onclose = function (event) {
+        handle('closed: ' + event);
+    };
+    webSocket.onerror = function (event) {
+        handle('error: ' + event);
+    };
+    webSocket.onmessage = function (event) {
+        handle('message: ' + event.data);
+    };
+
+    function handle(event) {
+        document.querySelector(".events").innerHTML += event + "<br>";
+    }
+</script>
+</body>
+</html>
