@@ -1,6 +1,6 @@
 package demo.spring5.webclient.rest.client;
 
-import demo.spring5.rest.shared.model.Todo;
+import demo.spring5.webclient.rest.client.model.Todo;
 import demo.spring5.webclient.rest.client.service.TodoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class CommandLineRunnerConfiguration {
             LOGGER.info("start");
 
             delay();
-            todoService.deleteAll();
+            block(todoService.deleteAll());
             LOGGER.info("all after deleteAll: " + block(todoService.getAll()));
 
             delay();
@@ -49,7 +49,7 @@ public class CommandLineRunnerConfiguration {
             LOGGER.info("all after update: " + block(todoService.getAll()));
 
             delay();
-            todoService.delete(todo);
+            block(todoService.deleteAll());
             LOGGER.info("all after delete: " + block(todoService.getAll()));
 
             LOGGER.info("finish");
