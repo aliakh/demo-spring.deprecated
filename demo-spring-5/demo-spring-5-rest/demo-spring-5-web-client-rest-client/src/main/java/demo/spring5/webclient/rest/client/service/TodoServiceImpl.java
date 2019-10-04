@@ -1,6 +1,6 @@
 package demo.spring5.webclient.rest.client.service;
 
-import demo.spring5.rest.shared.model.Todo;
+import demo.spring5.webclient.rest.client.model.Todo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
