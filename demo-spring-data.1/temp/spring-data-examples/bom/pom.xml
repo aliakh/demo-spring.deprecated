@@ -9,7 +9,7 @@
 	<name>Spring Data - Using the BOM for dependency management</name>
 
 	<properties>
-		<spring.version>5.1.5.RELEASE</spring.version>
+		<spring.version>5.1.18.RELEASE</spring.version>
 		<spring-data.version>Lovelace-SR5</spring-data.version>
 	</properties>
 
